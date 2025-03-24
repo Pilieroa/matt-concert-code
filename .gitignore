@@ -71,3 +71,4 @@ node_modules/
 .dataconnect
 
 *.pyc
+**/__pycache__/*

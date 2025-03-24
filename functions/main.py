@@ -13,7 +13,7 @@ from scraping_service import get_upcoming_events
 firebase_admin.initialize_app()
 
 
-@scheduler_fn.on_schedule(schedule="* 9 * * 0")
+@scheduler_fn.on_schedule(schedule="0 9 * * 0")
 def send_concerts():
     resend.api_key = os.environ.get("RESEND_API_KEY")
     html = get_html_from_events(get_upcoming_events())
