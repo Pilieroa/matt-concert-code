@@ -16,9 +16,10 @@ def send_concerts(event):
     html = get_html_from_events(get_upcoming_events())
     resend.Emails.send(
         {
+            "cc": "afpiliero@gmail.com",
             "from": "shows4matt@definitelya.website",
-            "to": os.environ.get("RECIPIENT"),
-            "subject": "Tryna see something?",
             "html": html,
+            "subject": "Tryna see something?",
+            "to": os.environ.get("RECIPIENT"),
         }
     )
