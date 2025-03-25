@@ -10,13 +10,13 @@ from scraping_service import get_upcoming_events
 firebase_admin.initialize_app()
 
 
-@scheduler_fn.on_schedule(schedule="1 9 * * 0")
+@scheduler_fn.on_schedule(schedule="1 9 * * 0", secrets=["RESEND_API_KEY", "RECIPIENT"])
 def send_concerts(event):
     resend.api_key = os.environ.get("RESEND_API_KEY")
     html = get_html_from_events(get_upcoming_events())
     resend.Emails.send(
         {
-            "from": "shows4matt@resend.dev",
+            "from": "shows4matt@definitelya.website",
             "to": os.environ.get("RECIPIENT"),
             "subject": "Tryna see something?",
             "html": html,

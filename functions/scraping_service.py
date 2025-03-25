@@ -147,7 +147,7 @@ class NineThirtyScraper(BaseScraper):
 
     @classmethod
     def _get_price_from_event_element(cls, event_element):
-        return (
+        return " ".join(
             event_element.find("section", class_="ticket-price external-ticket")
             .text.strip()
             .split()
